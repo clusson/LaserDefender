@@ -6,26 +6,30 @@ public class PlayerController : MonoBehaviour {
 	public float speed = 15.0f;
 	public float padding = 1f;
 	public GameObject projectile;
+
 	public float projectileSpeed;
 	public float firingRate = 0.2f;
 	public float health = 2050f;
 
-	float xmin;
-	float xmax;
+	public AudioClip fireSound;
+
+	float xmin = -5;
+	float xmax = 5;
 
 	void Start (){
-		float distance = transform.position.z - Camera.main.transform.position.z;
-		Vector3 leftMost = Camera.main.ViewportToWorldPoint(new Vector3(0,0,distance));
-		Vector3 rightMost = Camera.main.ViewportToWorldPoint(new Vector3(1,0,distance));
+		Camera camera = Camera.main;
+		float distance = transform.position.z - camera.transform.position.z;
+		Vector3 leftMost =camera.ViewportToWorldPoint(new Vector3(0,0,distance));
+		Vector3 rightMost = camera.ViewportToWorldPoint(new Vector3(1,0,distance));
 		xmin = leftMost.x + padding;
 		xmax = rightMost.x - padding;
 	}
-
-	void Fire () {
-		Vector3 offset = new Vector3(0, 1, 0);
-		GameObject beam = Instantiate(projectile, transform.position+offset, Quaternion.identity) as GameObject;
-		beam.GetComponent<Rigidbody2D>().velocity =new Vector3(0,projectileSpeed,0);
+	void Fire (){
+		GameObject beam = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+		beam.GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed, 0);
+		AudioSource.PlayClipAtPoint(fireSound, transform.position);
 	}
+
 	// Update is called once per frame
 	void Update ()
 	{
@@ -53,8 +57,14 @@ public class PlayerController : MonoBehaviour {
 			health -= missile.GetDamage ();
 			missile.Hit();
 			if (health <= 0) {
-				Destroy(gameObject);
+				Die();
 			}
 		}
+	}
+
+	void Die () {
+		LevelManager man = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+		man.LoadLevel("Win Screen");
+		Destroy(gameObject);
 	}
 }
