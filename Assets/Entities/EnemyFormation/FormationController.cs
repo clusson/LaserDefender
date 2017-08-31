@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour {
+public class FormationController : MonoBehaviour {
 	public GameObject enemyPrefab;
-	public float width = 10f;
-	public float height = 5f;
+	public float width = 15f;
+	public float height = 10f;
 	public float speed = 5f;
 	public float spawnDelay = 0.5f;
 
@@ -23,16 +23,10 @@ public class EnemySpawner : MonoBehaviour {
 		SpawUntilFull();
 	}
 
-	void SpawnEnemies (){
-		foreach (Transform child in transform) {
-			GameObject enemy = Instantiate (enemyPrefab, child.transform.position, Quaternion.identity) as GameObject;
-			enemy.transform.parent = child;
-		}
-	}
 
 	void SpawUntilFull ()
 	{
-		Transform freePosition = NextFreePosition ();
+		Transform freePosition = NextFreePosition();
 		if (freePosition) {
 			GameObject enemy = Instantiate (enemyPrefab, freePosition.position, Quaternion.identity) as GameObject;
 			enemy.transform.parent = freePosition;
