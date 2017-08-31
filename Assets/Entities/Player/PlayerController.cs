@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 	public float speed = 15.0f;
 	public float padding = 1f;
-
+	public GameObject projectile;
+	public float projectileSpeed;
 	float xmin;
 	float xmax;
 
@@ -16,9 +17,17 @@ public class PlayerController : MonoBehaviour {
 		xmin = leftMost.x + padding;
 		xmax = rightMost.x - padding;
 	}
+
+	void Fire () {
+		GameObject beam = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+		beam.GetComponent<Rigidbody2D>().velocity =new Vector3(0,projectileSpeed,0);
+	}
 	// Update is called once per frame
-	void Update ()
-	{
+	void Update () {
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			
+		}
+
 		if (Input.GetKey(KeyCode.LeftArrow)) {
 			transform.position += Vector3.left * speed * Time.deltaTime;
 		} else if(Input.GetKey(KeyCode.RightArrow)) {
