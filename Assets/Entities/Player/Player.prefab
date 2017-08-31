@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4438181990909814}
   - component: {fileID: 212533344614298048}
   - component: {fileID: 114353987892439892}
+  - component: {fileID: 60505806579047766}
+  - component: {fileID: 50620262848324984}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -41,6 +43,77 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50620262848324984
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1652520376528814}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!60 &60505806579047766
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1652520376528814}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.99, y: 0.75}
+    newSize: {x: 0.99, y: 0.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  m_Points:
+    m_Paths:
+    - - {x: 0.49930078, y: 0.06908989}
+      - {x: 0.4342328, y: 0.069171906}
+      - {x: 0.39823765, y: 0.009405613}
+      - {x: 0.3674198, y: -0.0107803345}
+      - {x: 0.27731326, y: 0.04419422}
+      - {x: 0.12877302, y: 0.12220335}
+      - {x: 0.109947294, y: 0.22424817}
+      - {x: 0.085540906, y: 0.3728497}
+      - {x: -0.08564647, y: 0.375}
+      - {x: -0.11087841, y: 0.22434568}
+      - {x: -0.12349599, y: 0.1271503}
+      - {x: -0.3596174, y: -0.01026392}
+      - {x: -0.41213986, y: 0.015676022}
+      - {x: -0.44554082, y: 0.071345806}
+      - {x: -0.49214423, y: 0.06685066}
+      - {x: -0.4966932, y: 0.029000282}
+      - {x: -0.48538336, y: -0.08492994}
+      - {x: -0.47349605, y: -0.24284935}
+      - {x: -0.4253612, y: -0.25654984}
+      - {x: -0.41424802, y: -0.21618748}
+      - {x: -0.13854878, y: -0.28854895}
+      - {x: -0.08209763, y: -0.37715054}
+      - {x: 0.07489443, y: -0.375}
+      - {x: 0.13672815, y: -0.2828493}
+      - {x: 0.4078171, y: -0.21316242}
+      - {x: 0.43994713, y: -0.2520976}
+      - {x: 0.47134563, y: -0.2550001}
 --- !u!114 &114353987892439892
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,6 +129,7 @@ MonoBehaviour:
   padding: 1
   projectile: {fileID: 1705721272296334, guid: c28e35ae55667d04ca081c66af5230d0, type: 2}
   projectileSpeed: 5
+  firingRate: 0.2
 --- !u!212 &212533344614298048
 SpriteRenderer:
   m_ObjectHideFlags: 1
